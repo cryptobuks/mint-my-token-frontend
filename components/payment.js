@@ -1,29 +1,48 @@
+import PropTypes from "prop-types"
 import StripeCheckout from "react-stripe-checkout"
+import { Mutation } from "react-apollo"
+import gql from "graphql-tag"
 import NProgress from "nprogress"
+import config from "../helpers/config"
+import { PAY_FOR_TOKEN_MUTATION } from "../helpers/graphql-operations"
 
 const onToken = async (response, createOrder) => {
   NProgress.start()
-  console.log(response)
-  // const order = await createOrder({ variables: { token: response.id } }).catch(err =>
-  //   alert(err.message)
-  // )
+  createOrder({ variables: { token: response.id } }).catch(err => alert(err.message))
 }
 
 const Payment = props => {
+  console.log(props.token)
   return (
-    <StripeCheckout
-      amount={500}
-      name="Mint My Tolen"
-      description={`1 x Ethereum Token`}
-      image={""}
-      stripeKey="pk_test_B1APk7za38DQGlpd9o5kyzqX"
-      currency="GBP"
-      email={"info@mintmytoken.com"}
-      token={response => this.onToken(response, null)}
-    >
-      {props.children}
-    </StripeCheckout>
+    <Mutation mutation={PAY_FOR_TOKEN_MUTATION} variables={props.token}>
+      {(payForToken, { loading, error }) => (
+        <StripeCheckout
+          name="Mint My Token"
+          description="1 x custom ERC-20 token"
+          currency="GBP"
+          allowRememberMe={false}
+          amount={config.TOKEN_PRICE}
+          stripeKey={config.STRIPE_KEY}
+          email={config.CUSTOMER_SERVICE_EMAIL}
+          token={response => onToken(response, null)}
+        >
+          {props.children}
+        </StripeCheckout>
+      )}
+    </Mutation>
   )
+}
+
+Payment.propTypes = {
+  children: PropTypes.element.isRequired,
+  token: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    symbol: PropTypes.string.isRequired,
+    supply: PropTypes.number.isRequired,
+    decimals: PropTypes.number.isRequired,
+    address: PropTypes.string.isRequired,
+    terms: PropTypes.bool.isRequired
+  })
 }
 
 export default Payment

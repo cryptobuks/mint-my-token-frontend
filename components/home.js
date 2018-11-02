@@ -1,9 +1,8 @@
 import { useState } from "react"
-import { Button, Grid, Segment, Message } from "semantic-ui-react"
-import Mint from "./mint"
+import Link from "next/link"
+import { Button, Grid, Segment } from "semantic-ui-react"
 
 const Home = () => {
-  const [showMinting, setMinting] = useState(false)
   return (
     <Grid columns="equal" padded="vertically">
       <Grid.Column />
@@ -16,11 +15,10 @@ const Home = () => {
             impedit esse quasi, optio distinctio provident cumque voluptates. Assumenda, distinctio
             laboriosam! Earum explicabo cumque sed nam ut minima.
           </p>
-          <Button color="green" onClick={() => setMinting(true)} disabled={showMinting}>
-            Lets Mint a Token!
-          </Button>
+          <Link href="/mint">
+            <Button color="green">Lets Mint a Token!</Button>
+          </Link>
         </Segment>
-        {showMinting && <Mint />}
       </Grid.Column>
       <Grid.Column />
     </Grid>

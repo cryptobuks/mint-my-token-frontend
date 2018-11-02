@@ -1,24 +1,26 @@
-import styled from "styled-components"
-
-const Title = styled.h2`
-  font-size: 3rem;
-  text-align: center;
-`
+import Link from "next/link"
+import { Header as SemanticHeader } from "semantic-ui-react"
 
 const Header = () => {
   return (
     <nav>
-      <h2>Mint My Token ⚒️</h2>
+      <SemanticHeader as="h1">
+        <Link href="/">
+          <a>Mint My Token ⛏️</a>
+        </Link>
+      </SemanticHeader>
       <style jsx>{`
         nav {
-          padding: 5px;
+          padding: 0.5rem;
           background: #a9a9a9;
-        }
-        h2 {
-          font-size: 2rem;
-          font-weight: 600;
           text-align: center;
-          color: black;
+        }
+        a {
+          text-decoration: none;
+          color: inherit;
+        }
+        a:hover {
+          text-decoration: underline;
         }
       `}</style>
     </nav>
