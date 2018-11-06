@@ -1,13 +1,13 @@
 import { useState } from "react"
 import Link from "next/link"
 import { Button, Grid, Segment } from "semantic-ui-react"
+import RecentOrders from "./recent-orders"
 
 const Home = () => {
   return (
-    <Grid columns="equal" padded="vertically">
-      <Grid.Column />
-      <Grid.Column width={8}>
-        <Segment>
+    <Grid centered stackable columns={2}>
+      <Grid.Row>
+        <Grid.Column>
           <h2>Welcome weary traveller,</h2>
           <p>A short introductory latin blurb!</p>
           <p>
@@ -15,12 +15,23 @@ const Home = () => {
             impedit esse quasi, optio distinctio provident cumque voluptates. Assumenda, distinctio
             laboriosam! Earum explicabo cumque sed nam ut minima.
           </p>
-          <Link href="/mint">
-            <Button color="green">Lets Mint a Token!</Button>
+          <Link href="/mint" pref>
+            <Button color="violet" basic size="huge">
+              Mint My Token!
+            </Button>
           </Link>
-        </Segment>
-      </Grid.Column>
-      <Grid.Column />
+          <p className="point-up">☝️</p>
+          <style jsx>{`
+            p.point-up {
+              font-size: 4rem;
+              vertical-align: center;
+            }
+          `}</style>
+        </Grid.Column>
+        <Grid.Column width={4}>
+          <RecentOrders />
+        </Grid.Column>
+      </Grid.Row>
     </Grid>
   )
 }

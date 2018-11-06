@@ -1,19 +1,31 @@
 import Link from "next/link"
-import { Header as SemanticHeader } from "semantic-ui-react"
+import { Header as SemanticHeader, Icon } from "semantic-ui-react"
 
 const Header = () => {
   return (
     <nav>
-      <SemanticHeader as="h1">
-        <Link href="/">
-          <a>Mint My Token ⛏️</a>
-        </Link>
-      </SemanticHeader>
+      <div>
+        <p>
+          <Link href="/">
+            <a>Mint My Token</a>
+          </Link>
+          &nbsp;⛏️
+          <Icon name="bitcoin" />
+          <Icon name="ethereum" />
+          💰
+        </p>
+      </div>
       <style jsx>{`
         nav {
-          padding: 0.5rem;
-          background: #a9a9a9;
+          padding: 2rem;
           text-align: center;
+        }
+        h1 {
+          font-size: 6rem;
+          font-weight: 600;
+        }
+        p {
+          font-size: 5rem;
         }
         a {
           text-decoration: none;
