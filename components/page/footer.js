@@ -5,11 +5,6 @@ import { grey } from "ansi-colors"
 const Footer = () => (
   <footer>
     <div className="social">
-      <Link href="https://medium.com/@broadhaven.tech">
-        <a>
-          <Icon name="help" size="big" />
-        </a>
-      </Link>
       <Link href="https://twitter.com">
         <a>
           <Icon name="twitter" size="big" />
@@ -36,9 +31,6 @@ const Footer = () => (
         padding-left: 1rem;
         text-decoration: none;
         color: purple;
-      }
-      a:hover {
-        color: violet;
       }
     `}</style>
   </footer>

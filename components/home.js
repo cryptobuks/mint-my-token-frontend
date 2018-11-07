@@ -15,7 +15,7 @@ const Home = () => {
             impedit esse quasi, optio distinctio provident cumque voluptates. Assumenda, distinctio
             laboriosam! Earum explicabo cumque sed nam ut minima.
           </p>
-          <Link href="/mint" pref>
+          <Link href="/mint" prefetch>
             <Button color="violet" basic size="huge">
               Mint My Token!
             </Button>

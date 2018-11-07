@@ -27,3 +27,14 @@ export const SINGLE_ORDER_QUERY = gql`
     }
   }
 `
+
+export const RECENT_ORDERS_MUTATION = gql`
+  query RECENT_ORDERS_MUTATION {
+    recentOrders {
+      name
+      symbol
+      createdAt
+      contractAddress
+    }
+  }
+`

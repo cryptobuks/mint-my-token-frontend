@@ -1,59 +1,56 @@
+import { Query } from "react-apollo"
 import { Card, Feed } from "semantic-ui-react"
+import dayjs from "dayjs"
+import relativeTime from "dayjs/plugin/relativeTime"
+import ErrorMessage from "./error-message"
+import Loading from "./loading"
+import { RECENT_ORDERS_MUTATION } from "../helpers/graphql-operations"
+
+dayjs.extend(relativeTime)
 
 const RecentOrders = () => (
   <Card fluid>
     <Card.Content>
       <Card.Header>Recent Activity</Card.Header>
     </Card.Content>
+
     <Card.Content>
       <Feed>
-        <Feed.Event>
-          <Feed.Label icon="bitcoin" />
-          <Feed.Content>
-            <Feed.Date content="1 day ago" />
-            <Feed.Summary>
-              You added <a>Jenny Hess</a> to your <a>coworker</a> group.
-            </Feed.Summary>
-          </Feed.Content>
-        </Feed.Event>
-
-        <Feed.Event>
-          <Feed.Label icon="bitcoin" />
-          <Feed.Content>
-            <Feed.Date content="3 days ago" />
-            <Feed.Summary>
-              You added <a>Molly Malone</a> as a friend.
-            </Feed.Summary>
-          </Feed.Content>
-        </Feed.Event>
-
-        <Feed.Event>
-          <Feed.Label icon="bitcoin" />
-          <Feed.Content>
-            <Feed.Date content="4 days ago" />
-            <Feed.Summary>
-              You added <a>Elliot Baker</a> to your <a>musicians</a> group.
-            </Feed.Summary>
-          </Feed.Content>
-        </Feed.Event>
-        <Feed.Event>
-          <Feed.Label icon="bitcoin" />
-          <Feed.Content>
-            <Feed.Date content="4 days ago" />
-            <Feed.Summary>
-              You added <a>Elliot Baker</a> to your <a>musicians</a> group.
-            </Feed.Summary>
-          </Feed.Content>
-        </Feed.Event>
-        <Feed.Event>
-          <Feed.Label icon="bitcoin" />
-          <Feed.Content>
-            <Feed.Date content="4 days ago" />
-            <Feed.Summary>
-              You added <a>Elliot Baker</a> to your <a>musicians</a> group.
-            </Feed.Summary>
-          </Feed.Content>
-        </Feed.Event>
+        <Query query={RECENT_ORDERS_MUTATION}>
+          {({ data, loading, error }) => {
+            if (error) return <ErrorMessage error={error} />
+            if (loading) return <Loading />
+            const orders = data.recentOrders
+            return (
+              <>
+                {orders.map(({ name, symbol, contractAddress, createdAt }, index) => (
+                  <Feed.Event key={index}>
+                    <Feed.Label icon="ethereum" />
+                    <Feed.Content>
+                      <Feed.Date content={dayjs(Number(createdAt)).from()} />
+                      {/* <Feed.Summary></Feed.Summary> */}
+                      <Feed.Extra text>Someone created {symbol}!</Feed.Extra>
+                      <Feed.Meta>
+                        {contractAddress !== "Pending" && (
+                          <span>
+                            View on &nbsp;
+                            <a
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              href={`https://etherscan.io/address/${contractAddress}`}
+                            >
+                              EtherScan
+                            </a>
+                          </span>
+                        )}
+                      </Feed.Meta>
+                    </Feed.Content>
+                  </Feed.Event>
+                ))}
+              </>
+            )
+          }}
+        </Query>
       </Feed>
     </Card.Content>
   </Card>

@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "apollo-boost": "^0.1.19",
+    "dayjs": "^1.7.7",
     "ethers": "^4.0.7",
     "graphql": "^14.0.2",
     "graphql-tag": "^2.10.0",

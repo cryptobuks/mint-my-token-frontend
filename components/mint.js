@@ -1,21 +1,22 @@
 import { useState } from "react"
 import { Mutation } from "react-apollo"
 import Router from "next/router"
+import Link from "next/link"
 import StripeCheckout from "react-stripe-checkout"
-import config from "../helpers/config"
 import NProgress from "nprogress"
-import {
-  Button,
-  Form,
-  Checkbox,
-  Label,
-  Input,
-  Grid,
-  Popup,
-  Segment,
-  Message
-} from "semantic-ui-react"
+import { Button, Form, Checkbox, List, Segment, Message, Input } from "semantic-ui-react"
 import { PAY_FOR_TOKEN_MUTATION } from "../helpers/graphql-operations"
+import {
+  validTokenParameters,
+  validEmail,
+  validName,
+  validSymbol,
+  validSupply,
+  validDecimals,
+  validEthereumAddress,
+  validTerms
+} from "../helpers/ethereum"
+import config from "../helpers/config"
 
 async function onToken(response, token, payForToken) {
   NProgress.start()
@@ -33,45 +34,16 @@ async function onToken(response, token, payForToken) {
     })
 }
 
-const EnhancedInput = ({ popupContent, ...remainder }) => (
-  <Form.Field>
-    <Input {...remainder}>
-      <Popup
-        content={popupContent}
-        trigger={
-          <Label
-            size="big"
-            content={
-              <div className="labelInner">
-                {remainder.name === "walletAddress"
-                  ? "Wallet Address"
-                  : remainder.name[0].toUpperCase() + remainder.name.slice(1)}
-              </div>
-            }
-          />
-        }
-      />
-      <input />
-      <style jsx>{`
-        div.labelInner {
-          width: 80px;
-          text-align: center;
-        }
-      `}</style>
-    </Input>
-  </Form.Field>
-)
-
 const Mint = () => {
   function state() {
     const [values, setValue] = useState({
-      email: "tim.holmes.mitra@gmail.com",
-      name: "The Holmes-Mitra Family Token",
-      symbol: "HMFT",
-      supply: 3,
-      decimals: 0,
-      walletAddress: "0x35C",
-      terms: true
+      email: "",
+      name: "",
+      symbol: "",
+      supply: "",
+      decimals: "",
+      walletAddress: "",
+      terms: false
     })
 
     function onChange({ target }) {
@@ -89,6 +61,7 @@ const Mint = () => {
 
   const [token, onTokenValueChange] = state()
   const { email, name, symbol, supply, decimals, walletAddress, terms } = token
+  const disableSubmit = !validTokenParameters(token)
 
   return (
     <div>
@@ -102,96 +75,133 @@ const Mint = () => {
               error={Boolean(error)}
             >
               <Message error header="Error" content="There was an error processing your request." />
-              <Message attached header="Token Minting" content="Explain whats going to happen" />
-              <Segment attached>
-                <EnhancedInput
-                  autoFocus
-                  required
-                  type="email"
-                  name="email"
-                  onChange={onTokenValueChange}
-                  value={email}
-                  placeholder="Where should we sent your receipt?"
-                  popupContent="Your email address is where your receipt is sent and only used by us if there is an issue with your order."
-                />
-                <EnhancedInput
-                  required
-                  type="text"
-                  name="name"
-                  onChange={onTokenValueChange}
-                  value={name}
-                  placeholder="Tell us your embarrassing ... err cool token name"
-                  popupContent="explanation about naming your tokens"
-                />
-                <EnhancedInput
-                  required
-                  type="text"
-                  name="symbol"
-                  onChange={onTokenValueChange}
-                  value={symbol}
-                  placeholder="Give your token a symbol like ETH or BTC... well maybe not them"
-                  popupContent="Symbols are short abbreviations which represent your token. Some examples include ETH for Ethereum and BTC for Bitcoin"
-                />
-                <EnhancedInput
-                  required
-                  type="number"
-                  name="supply"
-                  onChange={onTokenValueChange}
-                  value={supply}
-                  placeholder="How many should we create (this can't be changed so choose wisely)"
-                  popupContent="supply!"
-                />
-                <EnhancedInput
-                  required
-                  type="number"
-                  name="decimals"
-                  onChange={onTokenValueChange}
-                  value={decimals}
-                  placeholder="How many decimal spots do you want your token to have?"
-                  popupContent="decimals!"
-                />
-                <EnhancedInput
-                  required
-                  type="text"
-                  name="walletAddress"
-                  onChange={onTokenValueChange}
-                  value={walletAddress}
-                  placeholder="The total supply will be sent here"
-                  popupContent="address!"
-                />
+              <Message attached>
+                <Message.Header>Token Minting</Message.Header>
+                <Message.Content>
+                  Fill out the form below to create your token. If you need help then{" "}
+                  <Link href="https://medium.com/@broadhaven.tech">
+                    <a>read our guide on Medium</a>
+                  </Link>
+                  .
+                </Message.Content>
+              </Message>
+              <Segment attached color="violet">
+                <Form.Field>
+                  <label>Where should we send your receipt?</label>
+                  <Form.Input
+                    autoFocus
+                    required
+                    error={email !== "" && !validEmail(email)}
+                    type="email"
+                    name="email"
+                    onChange={onTokenValueChange}
+                    value={email}
+                    placeholder="super-cool-handle@hotmail.com"
+                  />
+                </Form.Field>
+                <Form.Field>
+                  <label>What do you want to name your token?</label>
+                  <Input
+                    required
+                    error={name !== "" && !validName(name)}
+                    type="text"
+                    name="name"
+                    onChange={onTokenValueChange}
+                    value={name}
+                    placeholder="Tasteless Token"
+                  />
+                </Form.Field>
+                <Form.Field>
+                  <label>Give your token a symbol</label>
+                  <Input
+                    required
+                    error={symbol !== "" && !validSymbol(symbol)}
+                    type="text"
+                    name="symbol"
+                    onChange={onTokenValueChange}
+                    value={symbol}
+                    placeholder="TT"
+                  />
+                </Form.Field>
+                <Form.Field>
+                  <label>How many tokens should we mint?</label>
+                  <Input
+                    required
+                    error={supply !== "" && !validSupply(supply)}
+                    type="number"
+                    name="supply"
+                    onChange={onTokenValueChange}
+                    value={supply}
+                    placeholder="1000000"
+                  />
+                </Form.Field>
+                <Form.Field>
+                  <label>How many decimal spots should be set for each token?</label>
+                  <Input
+                    required
+                    error={decimals !== "" && !validDecimals(decimals)}
+                    type="number"
+                    name="decimals"
+                    onChange={onTokenValueChange}
+                    value={decimals}
+                    placeholder="2"
+                  />
+                </Form.Field>
+                <Form.Field>
+                  <label>Where should we send the tokens when they are minted?</label>
+                  <Input
+                    required
+                    error={walletAddress !== "" && !validEthereumAddress(walletAddress)}
+                    type="text"
+                    name="walletAddress"
+                    onChange={onTokenValueChange}
+                    value={walletAddress}
+                    placeholder="0x4Ab65e00943B9035b85712DA01C63c4D069B65F5"
+                  />
+                </Form.Field>
                 <Form.Field>
                   <label>Terms and Conditions</label>
                   <Message color={terms ? "green" : "grey"}>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, sint autem
-                    corporis harum aperiam quis maxime eius perferendis dolorem voluptates, culpa
-                    consequuntur dignissimos velit facilis eveniet saepe ratione nemo dolor?
+                    <List bulleted>
+                      <List.Item>
+                        Tokens are for entertainment purposes only and have no monetary value.
+                      </List.Item>
+                      <List.Item>Tokens have no warranty and are provided as-is.</List.Item>
+                      <List.Item>
+                        We accept no responsibility for any defects with the Token.
+                      </List.Item>
+                      <List.Item>No refunds are accepted.</List.Item>
+                    </List>
                   </Message>
                   <Checkbox
                     required
                     name="terms"
-                    label="I agree to the above Terms and Conditions"
+                    label="I have read and agree to Mint My Token's Terms and Conditions"
                     checked={terms}
                     onClick={onTokenValueChange}
                   />
                 </Form.Field>
               </Segment>
               <Segment color="violet">
-                <StripeCheckout
-                  name="Mint My Token"
-                  description="1 x custom ERC-20 token"
-                  currency="GBP"
-                  locale="auto"
-                  // opened={}
-                  allowRememberMe={false}
-                  amount={config.TOKEN_PRICE}
-                  stripeKey={config.STRIPE_KEY}
-                  email={email}
-                  token={response => onToken(response, token, payForToken)}
-                >
-                  <Button type="submit" color="violet">
-                    Proceed to Checkout
+                {disableSubmit ? (
+                  <Button color="violet" disabled>
+                    Check Form Input
                   </Button>
-                </StripeCheckout>
+                ) : (
+                  <StripeCheckout
+                    name="Mint My Token"
+                    description="1 x bespoke ERC-20 token"
+                    currency="GBP"
+                    locale="auto"
+                    allowRememberMe={false}
+                    amount={config.TOKEN_PRICE}
+                    stripeKey={config.STRIPE_KEY}
+                    email={email}
+                    token={response => onToken(response, token, payForToken)}
+                  >
+                    <Button color="violet">Proceed to Checkout</Button>
+                  </StripeCheckout>
+                )}
               </Segment>
             </Form>
           )
