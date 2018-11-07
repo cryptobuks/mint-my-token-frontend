@@ -181,6 +181,7 @@ const Mint = () => {
                   description="1 x custom ERC-20 token"
                   currency="GBP"
                   locale="auto"
+                  // opened={}
                   allowRememberMe={false}
                   amount={config.TOKEN_PRICE}
                   stripeKey={config.STRIPE_KEY}

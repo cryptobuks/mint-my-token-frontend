@@ -8,20 +8,34 @@ import Footer from "./page/footer"
 class Page extends Component {
   render() {
     return (
-      <>
+      <div className="box">
         <Meta />
-        <Header />
-        <div>
-          {this.props.children}
-          <style jsx>{`
-            div {
-              height: calc(100vh - 155px - 77px);
-              overflow: auto;
-            }
-          `}</style>
+        <div className="header">
+          <Header />
         </div>
-        <Footer />
-      </>
+        <div className="content">{this.props.children}</div>
+        <div className="footer">
+          <Footer />
+        </div>
+        <style jsx>{`
+          div.box {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100vh;
+          }
+
+          div.header {
+          }
+
+          div.content {
+            height: 100%;
+          }
+
+          div.footer {
+          }
+        `}</style>
+      </div>
     )
   }
 }
