@@ -2,6 +2,10 @@ import App from "next/app"
 import Page from "../components/page"
 import { ApolloProvider } from "react-apollo"
 import withApolloClient from "../helpers/with-apollo-client"
+import getConfig from "next/config"
+
+/* eslint-disable-next-line */
+console.log("Using config:", JSON.stringify(getConfig(), null, " "))
 
 class MintMyToken extends App {
   static async getInitialProps({ Component, ctx }) {

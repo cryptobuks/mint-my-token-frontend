@@ -6,9 +6,10 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "next",
+    "dev": "NODE_ENV=development next",
     "build": "next build",
-    "start": "next start"
+    "release": "docker build -t frontend -f ./cicd/Dockerfile .",
+    "serve": "next start -p 8080"
   },
   "dependencies": {
     "apollo-boost": "^0.1.19",

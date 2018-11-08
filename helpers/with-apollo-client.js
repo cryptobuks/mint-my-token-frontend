@@ -1,8 +1,10 @@
+import getConfig from "next/config"
 import withApollo from "next-with-apollo"
 import ApolloClient from "apollo-boost"
-import config from "./config"
 
-const { APOLLO_ENDPOINT } = config
+const {
+  publicRuntimeConfig: { APOLLO_ENDPOINT }
+} = getConfig()
 
 const createClient = ({ headers }) =>
   new ApolloClient({

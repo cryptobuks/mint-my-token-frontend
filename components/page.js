@@ -1,6 +1,5 @@
 import React, { Component } from "react"
 import PropTypes from "prop-types"
-import { Grid } from "semantic-ui-react"
 import Meta from "./page/meta"
 import Header from "./page/header"
 import Footer from "./page/footer"

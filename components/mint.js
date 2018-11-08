@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Mutation } from "react-apollo"
+import getConfig from "next/config"
 import Router from "next/router"
 import Link from "next/link"
 import StripeCheckout from "react-stripe-checkout"
@@ -16,7 +17,10 @@ import {
   validEthereumAddress,
   validTerms
 } from "../helpers/ethereum"
-import config from "../helpers/config"
+
+const {
+  publicRuntimeConfig: { TOKEN_PRICE, STRIPE_KEY }
+} = getConfig()
 
 async function onToken(response, token, payForToken) {
   NProgress.start()
@@ -194,8 +198,8 @@ const Mint = () => {
                     currency="GBP"
                     locale="auto"
                     allowRememberMe={false}
-                    amount={config.TOKEN_PRICE}
-                    stripeKey={config.STRIPE_KEY}
+                    amount={TOKEN_PRICE}
+                    stripeKey={STRIPE_KEY}
                     email={email}
                     token={response => onToken(response, token, payForToken)}
                   >
