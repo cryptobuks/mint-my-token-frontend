@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Header as SemanticHeader, Icon } from "semantic-ui-react"
+import { Icon } from "semantic-ui-react"
 
 const Header = () => {
   return (
@@ -9,10 +9,12 @@ const Header = () => {
           <Link href="/">
             <a>Mint My Token</a>
           </Link>
-          &nbsp;⛏️
-          <Icon name="bitcoin" />
-          <Icon name="ethereum" />
-          💰
+          <span>
+            ⛏️
+            <Icon name="bitcoin" />
+            <Icon name="ethereum" />
+            💰
+          </span>
         </p>
       </div>
       <style jsx>{`
@@ -28,11 +30,16 @@ const Header = () => {
           font-size: 5rem;
         }
         a {
-          text-decoration: none;
+          text-decoration: underline;
           color: inherit;
         }
         a:hover {
-          text-decoration: underline;
+          text-decoration: none;
+        }
+        @media (max-width: 600px) {
+          p {
+            font-size: 3.25rem;
+          }
         }
       `}</style>
     </nav>

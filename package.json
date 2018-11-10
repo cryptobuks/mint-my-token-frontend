@@ -8,7 +8,6 @@
   "scripts": {
     "dev": "NODE_ENV=development next",
     "build": "next build",
-    "release": "docker build -t frontend -f ./cicd/Dockerfile .",
     "serve": "next start -p 8080"
   },
   "dependencies": {
@@ -22,6 +21,7 @@
     "nprogress": "^0.2.0",
     "react": "^16.7.0-alpha.0",
     "react-apollo": "^2.2.4",
+    "react-device-detect": "^1.6.1",
     "react-dom": "^16.7.0-alpha.0",
     "react-stripe-checkout": "^2.6.3",
     "semantic-ui-react": "^0.83.0"

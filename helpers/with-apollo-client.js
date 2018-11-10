@@ -11,9 +11,6 @@ const createClient = ({ headers }) =>
     uri: APOLLO_ENDPOINT,
     request: operation => {
       operation.setContext({
-        fetchOptions: {
-          credentials: "include"
-        },
         headers
       })
     },

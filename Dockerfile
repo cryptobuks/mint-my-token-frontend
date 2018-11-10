@@ -1,4 +1,6 @@
 FROM mhart/alpine-node:10
+RUN apk update && apk add vim curl
+
 ADD ./components /srv/components
 ADD ./pages /srv/pages
 ADD ./static /srv/static
