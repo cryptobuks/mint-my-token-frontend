@@ -15,16 +15,9 @@ const configs = {
     STRIPE_KEY: "pk_test_B1APk7za38DQGlpd9o5kyzqX",
     TOKEN_PRICE: 2000
   },
-  local: {
-    ENV,
-    APOLLO_ENDPOINT: "http://proxy.mintmytoken.convox/graphql",
-    STRIPE_KEY: "pk_test_B1APk7za38DQGlpd9o5kyzqX",
-    TOKEN_PRICE: 2000
-  },
   production: {
     ENV,
-    APOLLO_ENDPOINT:
-      "http://mintmytoken-proxy.produ-route-12s3ioyd5agag-1961636945.eu-central-1.convox.site/graphql",
+    APOLLO_ENDPOINT: "https://mintmytoken.com/graphql",
     STRIPE_KEY: "pk_test_B1APk7za38DQGlpd9o5kyzqX",
     TOKEN_PRICE: 2000
   }

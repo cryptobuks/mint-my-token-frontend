@@ -1,0 +1,33 @@
+#
+# Stages and their order
+#
+
+stages:
+  - test
+  - release
+
+test-frontend:
+  stage: test
+  image: mhart/alpine-node:10
+  script:
+    - echo "***** start test frontend *****"
+    - echo "we should write some"
+    - echo "***** end release frontend *****"
+
+release-frontend:
+  stage: release
+  image: docker
+  services:
+    - docker:dind
+  tags:
+    - docker
+  variables:
+    DOCKER_DRIVER: overlay2
+  script:
+    - echo "***** start release frontend *****"
+    - cd /builds/broadhaven/mintmytoken/frontend
+    - docker login registry.gitlab.com -u tim -p $API_KEY
+    - docker build --build-arg NODE_ENV=production -t registry.gitlab.com/broadhaven/mintmytoken/frontend:latest .
+    - docker push registry.gitlab.com/broadhaven/mintmytoken/frontend:latest
+    - docker logout registry.gitlab.com
+    - echo "***** end release frontend *****"
