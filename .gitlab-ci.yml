@@ -1,7 +1,3 @@
-#
-# Stages and their order
-#
-
 stages:
   - test
   - release
