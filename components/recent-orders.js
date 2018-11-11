@@ -28,8 +28,7 @@ const RecentOrders = () => (
                     <Feed.Label icon="ethereum" />
                     <Feed.Content>
                       <Feed.Date content={dayjs(Number(createdAt)).from()} />
-                      {/* <Feed.Summary></Feed.Summary> */}
-                      <Feed.Extra text>Someone created {symbol}!</Feed.Extra>
+                      <Feed.Extra text>Someone created a token called: {name}!</Feed.Extra>
                       <Feed.Meta>
                         {contractAddress !== "Pending" && (
                           <span>

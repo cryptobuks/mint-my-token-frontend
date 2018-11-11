@@ -6,7 +6,7 @@ import Link from "next/link"
 import StripeCheckout from "react-stripe-checkout"
 import NProgress from "nprogress"
 import { Button, Form, Checkbox, List, Segment, Message, Input } from "semantic-ui-react"
-import { PAY_FOR_TOKEN_MUTATION } from "../helpers/graphql-operations"
+import { PAY_FOR_TOKEN_MUTATION, RECENT_ORDERS_MUTATION } from "../helpers/graphql-operations"
 import {
   validTokenParameters,
   validEmail,
@@ -69,7 +69,10 @@ const Mint = () => {
 
   return (
     <div>
-      <Mutation mutation={PAY_FOR_TOKEN_MUTATION}>
+      <Mutation
+        mutation={PAY_FOR_TOKEN_MUTATION}
+        refetchQueries={[{ query: RECENT_ORDERS_MUTATION }]}
+      >
         {(payForToken, { loading, error }) => {
           return (
             <Form
