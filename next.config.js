@@ -18,7 +18,7 @@ const configs = {
   production: {
     ENV,
     APOLLO_ENDPOINT: "https://mintmytoken.com/graphql",
-    STRIPE_KEY: "pk_test_B1APk7za38DQGlpd9o5kyzqX",
+    STRIPE_KEY: "pk_live_mZOuQKf7N5nbEFCI7bsDFWcZ",
     TOKEN_PRICE: 2000
   }
 }
