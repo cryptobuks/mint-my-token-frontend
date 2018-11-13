@@ -24,8 +24,9 @@ const {
 
 async function onToken(response, token, payForToken) {
   NProgress.start()
-  const { id } = response
-  payForToken({ variables: { id, token } })
+  const { id: stripeId } = response
+  token.meta = "this is some meta info!" // TODO: add meta field
+  payForToken({ variables: { stripeId, token } })
     .then(res => {
       Router.push({
         pathname: "/order",

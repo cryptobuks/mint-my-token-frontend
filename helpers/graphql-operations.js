@@ -1,8 +1,8 @@
 import gql from "graphql-tag"
 
 export const PAY_FOR_TOKEN_MUTATION = gql`
-  mutation PAY_FOR_TOKEN_MUTATION($id: String!, $token: TokenParametersInput!) {
-    payForToken(id: $id, token: $token) {
+  mutation PAY_FOR_TOKEN_MUTATION($stripeId: String!, $token: TokenParametersInput!) {
+    payForToken(stripeId: $stripeId, token: $token) {
       success
       message
     }

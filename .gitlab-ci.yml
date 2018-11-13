@@ -12,6 +12,8 @@ test-frontend:
 
 release-frontend:
   stage: release
+  only:
+    - master
   image: docker
   services:
     - docker:dind
@@ -25,5 +27,25 @@ release-frontend:
     - docker login registry.gitlab.com -u tim -p $API_KEY
     - docker build --build-arg NODE_ENV=production -t registry.gitlab.com/broadhaven/mintmytoken/frontend:latest .
     - docker push registry.gitlab.com/broadhaven/mintmytoken/frontend:latest
+    - docker logout registry.gitlab.com
+    - echo "***** end release frontend *****"
+
+release-frontend:
+  stage: release
+  only:
+    - staging
+  image: docker
+  services:
+    - docker:dind
+  tags:
+    - docker
+  variables:
+    DOCKER_DRIVER: overlay2
+  script:
+    - echo "***** start release frontend *****"
+    - cd /builds/broadhaven/mintmytoken/frontend
+    - docker login registry.gitlab.com -u tim -p $API_KEY
+    - docker build --build-arg NODE_ENV=staging -t registry.gitlab.com/broadhaven/mintmytoken/frontend:staging .
+    - docker push registry.gitlab.com/broadhaven/mintmytoken/frontend:staging
     - docker logout registry.gitlab.com
     - echo "***** end release frontend *****"

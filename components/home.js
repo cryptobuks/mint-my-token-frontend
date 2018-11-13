@@ -18,7 +18,7 @@ const Home = () => {
     <Grid centered stackable columns={2}>
       <Grid.Row>
         <Grid.Column>
-          <Container text>
+          <Container>
             <Header size="medium">Mint your own crypto-currency in 2 clicks!</Header>
             <div className="call-to-action">
               <Link href="/mint" prefetch>

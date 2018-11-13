@@ -5,8 +5,12 @@ import relativeTime from "dayjs/plugin/relativeTime"
 import ErrorMessage from "./error-message"
 import Loading from "./loading"
 import { RECENT_ORDERS_MUTATION } from "../helpers/graphql-operations"
+import getConfig from "next/config"
 
 dayjs.extend(relativeTime)
+const {
+  publicRuntimeConfig: { BLOCK_EXPLORER_URL }
+} = getConfig()
 
 const RecentOrders = () => (
   <Card fluid>
@@ -36,7 +40,7 @@ const RecentOrders = () => (
                             <a
                               target="_blank"
                               rel="noopener noreferrer"
-                              href={`https://etherscan.io/address/${contractAddress}`}
+                              href={`${BLOCK_EXPLORER_URL}${contractAddress}`}
                             >
                               EtherScan
                             </a>
