@@ -10,7 +10,7 @@ test-frontend:
     - echo "we should write some"
     - echo "***** end release frontend *****"
 
-release-frontend:
+release-frontend-master:
   stage: release
   only:
     - master
@@ -30,7 +30,7 @@ release-frontend:
     - docker logout registry.gitlab.com
     - echo "***** end release frontend *****"
 
-release-frontend:
+release-frontend-staging:
   stage: release
   only:
     - staging
