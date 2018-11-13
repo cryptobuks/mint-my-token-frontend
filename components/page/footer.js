@@ -6,7 +6,7 @@ const Footer = () => (
   <footer>
     <div className="social">
       <Divider />
-      <Link href="https://twitter.com">
+      <Link href="https://twitter.com/mintmytoken">
         <a>
           <Icon name="twitter" size="big" />
         </a>
