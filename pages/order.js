@@ -4,6 +4,6 @@ import OrderDetails from "../components/order-details"
 const Order = ({ query }) => <OrderDetails id={query.id} />
 
 Order.propTypes = {
-  query: PropTypes.string.isRequired
+  query: PropTypes.object.isRequired
 }
 export default Order

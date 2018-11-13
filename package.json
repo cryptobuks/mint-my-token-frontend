@@ -19,7 +19,7 @@
     "next": "^7.0.2",
     "next-with-apollo": "^3.2.1",
     "nprogress": "^0.2.0",
-    "react": "^16.7.0-alpha.0",
+    "react": "^16.6.3",
     "react-apollo": "^2.2.4",
     "react-device-detect": "^1.6.1",
     "react-dom": "^16.7.0-alpha.0",
