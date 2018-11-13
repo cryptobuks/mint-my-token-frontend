@@ -8,28 +8,28 @@ const configs = {
     APOLLO_ENDPOINT: "http://localhost:8080/graphql",
     STRIPE_KEY: "pk_test_B1APk7za38DQGlpd9o5kyzqX",
     TOKEN_PRICE: 520,
-    BLOCK_EXPLORER_URL: "https://ropsten.etherscan.io/address/"
+    BLOCK_EXPLORER_URL: "https://ropsten.etherscan.io"
   },
   development: {
     ENV,
     APOLLO_ENDPOINT: "http://localhost:8080/graphql",
     STRIPE_KEY: "pk_test_B1APk7za38DQGlpd9o5kyzqX",
     TOKEN_PRICE: 520,
-    BLOCK_EXPLORER_URL: "https://ropsten.etherscan.io/address/"
+    BLOCK_EXPLORER_URL: "https://ropsten.etherscan.io"
   },
   staging: {
     ENV,
     APOLLO_ENDPOINT: "https://staging.mintmytoken.com/graphql",
     STRIPE_KEY: "pk_test_B1APk7za38DQGlpd9o5kyzqX",
     TOKEN_PRICE: 520,
-    BLOCK_EXPLORER_URL: "https://ropsten.etherscan.io/address/"
+    BLOCK_EXPLORER_URL: "https://ropsten.etherscan.io"
   },
   production: {
     ENV,
     APOLLO_ENDPOINT: "https://mintmytoken.com/graphql",
     STRIPE_KEY: "pk_live_mZOuQKf7N5nbEFCI7bsDFWcZ",
     TOKEN_PRICE: 520,
-    BLOCK_EXPLORER_URL: "https://etherscan.io/address/"
+    BLOCK_EXPLORER_URL: "https://etherscan.io"
   }
 }
 

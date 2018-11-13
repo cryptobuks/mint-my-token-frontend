@@ -40,7 +40,7 @@ const RecentOrders = () => (
                             <a
                               target="_blank"
                               rel="noopener noreferrer"
-                              href={`${BLOCK_EXPLORER_URL}${contractAddress}`}
+                              href={`${BLOCK_EXPLORER_URL}/address/${contractAddress}`}
                             >
                               EtherScan
                             </a>

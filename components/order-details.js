@@ -1,5 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
+import getConfig from "next/config"
 import { Query } from "react-apollo"
 import { Segment, List, Header, Divider } from "semantic-ui-react"
 import { SINGLE_ORDER_QUERY } from "../helpers/graphql-operations"
@@ -15,6 +16,10 @@ const StyledListItem = ({ header, content, icon }) => (
     </List.Content>
   </List.Item>
 )
+
+const {
+  publicRuntimeConfig: { BLOCK_EXPLORER_URL }
+} = getConfig()
 
 const OrderDetails = ({ id }) => (
   <div>
@@ -52,13 +57,41 @@ const OrderDetails = ({ id }) => (
                 <StyledListItem header="Decimals" content={decimals} icon="hashtag" />
                 <StyledListItem
                   header="Ethereum Transaction Id"
-                  content={transactionId}
+                  content={
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href={`${BLOCK_EXPLORER_URL}/tx/${transactionId}`}
+                    >
+                      {transactionId}
+                    </a>
+                  }
                   icon="ethereum"
                 />
-                <StyledListItem header="Wallet Address" content={walletAddress} icon="ethereum" />
+                <StyledListItem
+                  header="Wallet Address"
+                  content={
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href={`${BLOCK_EXPLORER_URL}/address/${walletAddress}`}
+                    >
+                      {walletAddress}
+                    </a>
+                  }
+                  icon="ethereum"
+                />
                 <StyledListItem
                   header="Contract Address"
-                  content={contractAddress}
+                  content={
+                    <a
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      href={`${BLOCK_EXPLORER_URL}/address/${contractAddress}`}
+                    >
+                      {contractAddress}
+                    </a>
+                  }
                   icon="ethereum"
                 />
               </List>
