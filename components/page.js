@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import PropTypes from "prop-types"
+import { isMobile } from "react-device-detect"
 import Meta from "./page/meta"
 import Header from "./page/header"
 import Footer from "./page/footer"
@@ -21,17 +22,14 @@ class Page extends Component {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            height: 100vh;
+            padding: 1rem;
+            height: ${isMobile ? "100%" : "100vh"};
           }
-
           div.header {
+            margin-bottom: 1rem;
           }
-
           div.content {
             height: 100%;
-          }
-
-          div.footer {
           }
         `}</style>
       </div>
