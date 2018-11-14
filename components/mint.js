@@ -51,6 +51,15 @@ class Mint extends Component {
       walletAddress: "",
       terms: false
     }
+    // this.state = {
+    //   email: "tim.holmes.mitra@gmail.com  ",
+    //   name: "Tim",
+    //   symbol: "TOK",
+    //   supply: "77",
+    //   decimals: "2",
+    //   walletAddress: "0x4Ab65e00943B9035b85712DA01C63c4D069B65F5",
+    //   terms: true
+    // }
   }
 
   onTokenChange = ({ target }) => {
@@ -99,7 +108,7 @@ class Mint extends Component {
                 </Message>
                 <Segment attached color="violet">
                   <Form.Field>
-                    <label>Where should we send your receipt?</label>
+                    <label>Where should we send your receipt and order details?</label>
                     <Form.Input
                       autoFocus
                       required
@@ -202,7 +211,7 @@ class Mint extends Component {
                   ) : (
                     <StripeCheckout
                       name="Mint My Token"
-                      description="1 x bespoke ERC-20 token"
+                      description={`${supply} x ${symbol} tokens`}
                       currency="GBP"
                       locale="auto"
                       allowRememberMe={false}

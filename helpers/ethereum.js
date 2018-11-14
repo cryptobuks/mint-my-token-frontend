@@ -16,7 +16,7 @@ export const validTokenParameters = ({
   validEthereumAddress(walletAddress) &&
   validTerms(terms)
 
-export const validEmail = email => /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
+export const validEmail = email => /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w+)$/.test(email)
 
 export const validName = name => name.length > 0
 
@@ -24,7 +24,7 @@ export const validSymbol = symbol => symbol.length > 0
 
 export const validSupply = supply => supply > 0
 
-export const validDecimals = decimals => decimals > 0
+export const validDecimals = decimals => decimals >= 0
 
 export const validEthereumAddress = address => {
   try {
