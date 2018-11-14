@@ -5,7 +5,6 @@ import { grey } from "ansi-colors"
 const Footer = () => (
   <footer>
     <div className="social">
-      <Divider />
       <Link href="https://twitter.com/mintmytoken">
         <a>
           <Icon name="twitter" size="big" />
@@ -20,11 +19,11 @@ const Footer = () => (
     <div className="copy">
       <p>&copy; 2018 mintmytoken.com is brought to you by broadhaven</p>
     </div>
-    <Divider />
     <style jsx>{`
       footer {
         width: 100%;
         text-align: center;
+        margin-bottom: 0.5rem;
       }
       div.social {
         padding-top: 1rem;

@@ -1,22 +1,25 @@
 import Link from "next/link"
-import { Icon } from "semantic-ui-react"
+import { Icon, Grid, Message } from "semantic-ui-react"
 
 const Header = () => {
   return (
     <nav>
-      <div>
-        <p>
-          <Link href="/">
-            <a>Mint My Token</a>
-          </Link>
-          <span>
-            ⛏️
+      <Grid stackable columns={2}>
+        <Grid.Column columns={4} textAlign="center">
+          <h1>
+            <Link href="/">
+              <a>Mint My Token</a>
+            </Link>
+          </h1>
+        </Grid.Column>
+        <Grid.Column columns={4} textAlign="center">
+          <h1>
+            ⛏️ 💰
             <Icon name="bitcoin" />
             <Icon name="ethereum" />
-            💰
-          </span>
-        </p>
-      </div>
+          </h1>
+        </Grid.Column>
+      </Grid>
       <style jsx>{`
         nav {
           padding: 2rem;
@@ -36,8 +39,13 @@ const Header = () => {
         a:hover {
           text-decoration: none;
         }
+        @media (max-width: 1200px) {
+          h1 {
+            font-size: 4.5rem;
+          }
+        }
         @media (max-width: 600px) {
-          p {
+          h1 {
             font-size: 3.25rem;
           }
         }
