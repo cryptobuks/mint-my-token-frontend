@@ -1,6 +1,6 @@
-import React, { Component, useState } from "react"
+import React, { Component } from "react"
 import Link from "next/link"
-import { Button, Grid, Container, Header, Icon, List, Divider, Accordion } from "semantic-ui-react"
+import { Button, Grid, Container, Header, Icon, List, Accordion, Card } from "semantic-ui-react"
 import RecentOrders from "./recent-orders"
 
 class Home extends Component {

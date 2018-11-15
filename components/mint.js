@@ -106,83 +106,71 @@ class Mint extends Component {
                     .
                   </Message.Content>
                 </Message>
-                <Segment attached color="violet">
+                <Segment attached color="green">
+                  <Form.Input
+                    label="Where should we send your receipt and order details?"
+                    autoFocus
+                    required
+                    error={email !== "" && !validEmail(email)}
+                    type="email"
+                    name="email"
+                    onChange={this.onTokenChange}
+                    value={email}
+                    placeholder="super-cool-handle@hotmail.com"
+                  />
+                  <Form.Input
+                    label="What do you want to name your token?"
+                    required
+                    error={name !== "" && !validName(name)}
+                    type="text"
+                    name="name"
+                    onChange={this.onTokenChange}
+                    value={name}
+                    placeholder="Tasteless Token"
+                  />
+                  <Form.Input
+                    label="Give your token a symbol"
+                    required
+                    error={symbol !== "" && !validSymbol(symbol)}
+                    type="text"
+                    name="symbol"
+                    onChange={this.onTokenChange}
+                    value={symbol}
+                    placeholder="TT"
+                  />
+                  <Form.Input
+                    label="How many tokens should we mint?"
+                    required
+                    error={supply !== "" && !validSupply(supply)}
+                    type="number"
+                    name="supply"
+                    onChange={this.onTokenChange}
+                    value={supply}
+                    placeholder="1000000"
+                  />
+                  <Form.Input
+                    label="How many decimal spots should be set for each token?"
+                    required
+                    error={decimals !== "" && !validDecimals(decimals)}
+                    type="number"
+                    name="decimals"
+                    onChange={this.onTokenChange}
+                    value={decimals}
+                    placeholder="From 0 to 18 (default 2)"
+                  />
+                  <Form.Input
+                    label="Where should we send the tokens when they are minted?"
+                    required
+                    error={walletAddress !== "" && !validEthereumAddress(walletAddress)}
+                    type="text"
+                    name="walletAddress"
+                    onChange={this.onTokenChange}
+                    value={walletAddress}
+                    placeholder="0x4Ab65e00943B9035b85712DA01C63c4D069B65F5"
+                  />
                   <Form.Field>
-                    <label>Where should we send your receipt and order details?</label>
-                    <Form.Input
-                      autoFocus
-                      required
-                      error={email !== "" && !validEmail(email)}
-                      type="email"
-                      name="email"
-                      onChange={this.onTokenChange}
-                      value={email}
-                      placeholder="super-cool-handle@hotmail.com"
-                    />
-                  </Form.Field>
-                  <Form.Field>
-                    <label>What do you want to name your token?</label>
-                    <Input
-                      required
-                      error={name !== "" && !validName(name)}
-                      type="text"
-                      name="name"
-                      onChange={this.onTokenChange}
-                      value={name}
-                      placeholder="Tasteless Token"
-                    />
-                  </Form.Field>
-                  <Form.Field>
-                    <label>Give your token a symbol</label>
-                    <Input
-                      required
-                      error={symbol !== "" && !validSymbol(symbol)}
-                      type="text"
-                      name="symbol"
-                      onChange={this.onTokenChange}
-                      value={symbol}
-                      placeholder="TT"
-                    />
-                  </Form.Field>
-                  <Form.Field>
-                    <label>How many tokens should we mint?</label>
-                    <Input
-                      required
-                      error={supply !== "" && !validSupply(supply)}
-                      type="number"
-                      name="supply"
-                      onChange={this.onTokenChange}
-                      value={supply}
-                      placeholder="1000000"
-                    />
-                  </Form.Field>
-                  <Form.Field>
-                    <label>How many decimal spots should be set for each token?</label>
-                    <Input
-                      required
-                      error={decimals !== "" && !validDecimals(decimals)}
-                      type="number"
-                      name="decimals"
-                      onChange={this.onTokenChange}
-                      value={decimals}
-                      placeholder="2"
-                    />
-                  </Form.Field>
-                  <Form.Field>
-                    <label>Where should we send the tokens when they are minted?</label>
-                    <Input
-                      required
-                      error={walletAddress !== "" && !validEthereumAddress(walletAddress)}
-                      type="text"
-                      name="walletAddress"
-                      onChange={this.onTokenChange}
-                      value={walletAddress}
-                      placeholder="0x4Ab65e00943B9035b85712DA01C63c4D069B65F5"
-                    />
-                  </Form.Field>
-                  <Form.Field>
-                    <label>Terms and Conditions</label>
-                    <Message color={terms ? "green" : "grey"}>
+                    <Message>
+                      <label>Terms and Conditions</label>
                       <List bulleted>
                         <List.Item>
                           Tokens are for entertainment purposes only and have no monetary value.
@@ -203,10 +191,10 @@ class Mint extends Component {
                     />
                   </Form.Field>
                 </Segment>
-                <Segment color="violet">
+                <Segment color="green">
                   {disableSubmit ? (
-                    <Button color="violet" disabled>
-                      Check Form Input
+                    <Button color="green" disabled>
+                      Form Incomplete
                     </Button>
                   ) : (
                     <StripeCheckout
@@ -220,7 +208,7 @@ class Mint extends Component {
                       email={email}
                       token={response => onToken(response, token, payForToken)}
                     >
-                      <Button color="violet">Proceed to Checkout</Button>
+                      <Button color="green">Proceed to Checkout</Button>
                     </StripeCheckout>
                   )}
                 </Segment>
