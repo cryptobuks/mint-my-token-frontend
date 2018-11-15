@@ -17,9 +17,10 @@ import {
   validEthereumAddress,
   validTerms
 } from "../helpers/ethereum"
+import NewTabLink from "./new-tab-link"
 
 const {
-  publicRuntimeConfig: { TOKEN_PRICE, STRIPE_KEY }
+  publicRuntimeConfig: { TOKEN_PRICE, STRIPE_KEY, TERMS_AND_CONDITIONS }
 } = getConfig()
 
 async function onToken(response, token, payForToken) {
@@ -170,22 +171,15 @@ class Mint extends Component {
                   />
                   <Form.Field>
                     <Message>
-                      <label>Terms and Conditions</label>
-                      <List bulleted>
-                        <List.Item>
-                          Tokens are for entertainment purposes only and have no monetary value.
-                        </List.Item>
-                        <List.Item>Tokens have no warranty and are provided as-is.</List.Item>
-                        <List.Item>
-                          We accept no responsibility for any defects with the Token.
-                        </List.Item>
-                        <List.Item>No refunds are accepted.</List.Item>
-                      </List>
+                      <NewTabLink
+                        href={TERMS_AND_CONDITIONS}
+                        text="Mint My Token's Terms and Conditions of Use"
+                      />
                     </Message>
                     <Checkbox
                       required
                       name="terms"
-                      label="I have read and agree to Mint My Token's Terms and Conditions"
+                      label="I have read and agree to the Terms and Conditions of Use"
                       checked={terms}
                       onClick={this.onTokenChange}
                     />

@@ -6,6 +6,7 @@ import { Segment, List, Header, Divider } from "semantic-ui-react"
 import { SINGLE_ORDER_QUERY } from "../helpers/graphql-operations"
 import ErrorMessage from "./error-message"
 import Loading from "./loading"
+import NewTabLink from "./new-tab-link"
 
 const StyledListItem = ({ header, content, icon }) => (
   <List.Item>
@@ -58,39 +59,30 @@ const OrderDetails = ({ id }) => (
                 <StyledListItem
                   header="Ethereum Transaction Id"
                   content={
-                    <a
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <NewTabLink
                       href={`${BLOCK_EXPLORER_URL}/tx/${transactionId}`}
-                    >
-                      {transactionId}
-                    </a>
+                      text={"View transaction"}
+                    />
                   }
                   icon="ethereum"
                 />
                 <StyledListItem
                   header="Wallet Address"
                   content={
-                    <a
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <NewTabLink
                       href={`${BLOCK_EXPLORER_URL}/address/${walletAddress}`}
-                    >
-                      {walletAddress}
-                    </a>
+                      text={"View the wallet where the balance was transferred"}
+                    />
                   }
                   icon="ethereum"
                 />
                 <StyledListItem
                   header="Contract Address"
                   content={
-                    <a
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <NewTabLink
                       href={`${BLOCK_EXPLORER_URL}/address/${contractAddress}`}
-                    >
-                      {contractAddress}
-                    </a>
+                      text={"View the token contract"}
+                    />
                   }
                   icon="ethereum"
                 />

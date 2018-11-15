@@ -4,12 +4,14 @@ import { isMobile } from "react-device-detect"
 import Meta from "./page/meta"
 import Header from "./page/header"
 import Footer from "./page/footer"
+import Disclaimer from "./disclaimer"
 
 class Page extends Component {
   render() {
     return (
       <div className="box">
         <Meta />
+        <Disclaimer />
         <div className="header">
           <Header />
         </div>

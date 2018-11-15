@@ -1,7 +1,8 @@
 import React, { Component } from "react"
 import Link from "next/link"
-import { Button, Grid, Container, Header, Icon, List, Accordion, Card } from "semantic-ui-react"
+import { Button, Grid, Header, Icon, List, Accordion, Card } from "semantic-ui-react"
 import RecentOrders from "./recent-orders"
+import NewTabLink from "./new-tab-link"
 
 class Home extends Component {
   constructor(props) {
@@ -46,10 +47,12 @@ class Home extends Component {
               <Accordion.Content active={activeIndex === 0}>
                 <div className="list">
                   <List ordered>
-                    <List.Item>Design your token.</List.Item>
-                    <List.Item>Pay a small fee.</List.Item>
-                    <List.Item>Drink 🍺 or ☕ or 🍵!</List.Item>
-                    <List.Item>Send a friend your custom token!</List.Item>
+                    <List.Item>Design your token</List.Item>
+                    <List.Item>Pay £5</List.Item>
+                    <List.Item>
+                      Wait a few minutes ... perhaps drink a 🍺 or a ☕ or a 🍵?
+                    </List.Item>
+                    <List.Item>Brag to your friends</List.Item>
                   </List>
                 </div>
               </Accordion.Content>
@@ -68,14 +71,15 @@ class Home extends Component {
                 <div className="list">
                   <List ordered>
                     <List.Item>For fun!</List.Item>
-                    <List.Item>To experiment and learn!</List.Item>
+                    <List.Item>To experiment and learn</List.Item>
                     <List.Item>To own your own sh*t coin!</List.Item>
                     <List.Item>
-                      A <span className="secret">SECRET</span> project
+                      Some <span className="secret">SECRET</span> project (these are real ERC-20
+                      tokens so they can be used for anything)
                     </List.Item>
                     <List.Item>
-                      Or maybe … to launch the next crypto-currency hype-storm allowing you to move
-                      to the Crypto Valley in Zug, Switzerland!
+                      Or maybe … to launch the next crypto-currency hype-storm so you can move to
+                      the Crypto Valley in Zug, Switzerland?
                     </List.Item>
                   </List>
                 </div>
@@ -95,14 +99,17 @@ class Home extends Component {
                 <div className="list">
                   <List ordered>
                     <List.Item>
-                      We are blockchain and crypto-currency enthusiasts who want to open-up the
-                      ERC-20 token standard to the widest possible audience. In our day jobs, we
-                      work for Broadhaven.tech helping businesses understand and benefit from
-                      blockchain.
+                      We are blockchain and crypto-currency enthusiasts who want a tokenised world.
+                      In our day jobs, we work for{" "}
+                      <NewTabLink href="https://broadhaven.tech" text="broadhaven.tech" /> helping
+                      businesses understand, build on, and benefit from blockchain.
                     </List.Item>
                     <List.Item>
-                      If you would like to know more, &nbsp;
-                      <a href="mailto:hi@mintmytoken.com">email us</a>.
+                      If you would like to know more, or have some feedback then &nbsp;
+                      <a href="mailto:hi@mintmytoken.com">
+                        get in touch <Icon name="mail" />
+                      </a>
+                      !
                     </List.Item>
                   </List>
                 </div>
