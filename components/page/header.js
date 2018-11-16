@@ -4,49 +4,44 @@ import { Icon, Grid, Message } from "semantic-ui-react"
 const Header = () => {
   return (
     <nav>
-      <Grid stackable columns={2}>
-        <Grid.Column columns={4} textAlign="center">
-          <h1>
-            <Link href="/">
-              <a>Mint My Token</a>
-            </Link>
-          </h1>
-        </Grid.Column>
-        <Grid.Column columns={4} textAlign="center">
-          <h1>
-            ⛏️ 💰
-            <Icon name="bitcoin" />
-            <Icon name="ethereum" />
-          </h1>
-        </Grid.Column>
-      </Grid>
+      <h1>
+        ⛏️ 💰
+        <Link href="/">
+          <a>Mint My Token</a>
+        </Link>
+        <Icon name="bitcoin" />
+        <Icon name="ethereum" />
+      </h1>
       <style jsx>{`
         nav {
-          padding: 2rem;
+          padding: 1rem;
+          margin-bottom: 2rem;
           text-align: center;
-        }
-        h1 {
-          font-size: 6rem;
-          font-weight: 600;
-        }
-        p {
-          font-size: 5rem;
+          font-weight: 400;
+          background: rgba(255, 109, 255, 0.4);
         }
         a {
-          text-decoration: underline;
-          color: inherit;
+          color: black;
         }
         a:hover {
-          text-decoration: none;
+          text-decoration: underline;
         }
-        @media (max-width: 1200px) {
+        h1 {
+          font-size: 5rem;
+        }
+        @media (max-width: 900px) {
           h1 {
-            font-size: 4.5rem;
+            font-size: 4rem;
           }
         }
         @media (max-width: 600px) {
           h1 {
-            font-size: 3.25rem;
+            font-size: 2rem;
+          }
+        }
+        @media (max-width: 400px) {
+          h1 {
+            font-size: 1.5rem;
           }
         }
       `}</style>
