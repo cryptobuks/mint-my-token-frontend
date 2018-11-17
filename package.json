@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "NODE_ENV=development next",
     "build": "next build",
-    "serve": "next start -p 8081"
+    "serve": "next start -p 8080"
   },
   "dependencies": {
     "apollo-boost": "^0.1.19",

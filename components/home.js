@@ -52,7 +52,9 @@ class Home extends Component {
                     <List.Item>
                       Wait a few minutes ... perhaps drink a 🍺 or a ☕ or a 🍵?
                     </List.Item>
-                    <List.Item>Brag to your friends</List.Item>
+                    <List.Item>
+                      Brag to your friends by sending them a sh*t coin or two 😂
+                    </List.Item>
                   </List>
                 </div>
               </Accordion.Content>

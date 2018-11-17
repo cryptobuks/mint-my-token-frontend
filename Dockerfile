@@ -10,5 +10,5 @@ ADD ./yarn.lock /srv
 WORKDIR /srv
 RUN yarn
 RUN yarn build
-EXPOSE 8081
+EXPOSE 8080
 ENTRYPOINT ["yarn", "serve"]
