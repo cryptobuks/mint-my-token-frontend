@@ -27,6 +27,7 @@ async function onToken(response, token, payForToken) {
   NProgress.start()
   const { id: stripeId } = response
   token.meta = "this is some meta info!" // TODO: add meta field
+  token.supply = token.supply.toString()
   payForToken({ variables: { stripeId, token } })
     .then(res => {
       Router.push({
@@ -147,7 +148,7 @@ class Mint extends Component {
                     name="supply"
                     onChange={this.onTokenChange}
                     value={supply}
-                    placeholder="1000000"
+                    placeholder="1000000 (max 1,000,000,000,000,000,000)"
                   />
                   <Form.Input
                     label="How many decimal spots should be set for each token?"
@@ -157,7 +158,7 @@ class Mint extends Component {
                     name="decimals"
                     onChange={this.onTokenChange}
                     value={decimals}
-                    placeholder="From 0 to 18 (default 2)"
+                    placeholder="From 0 to 18"
                   />
                   <Form.Input
                     label="Where should we send the tokens when they are minted?"

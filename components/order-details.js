@@ -42,6 +42,18 @@ const OrderDetails = ({ id }) => (
             transactionId,
             contractAddress
           } = token
+
+          let Contract = (
+            <span>Your token is being deployed. Check back here in a few minutes.</span>
+          )
+          if (contractAddress !== "Pending")
+            Contract = (
+              <NewTabLink
+                href={`${BLOCK_EXPLORER_URL}/address/${contractAddress}`}
+                text={"View the token contract"}
+              />
+            )
+
           return (
             <>
               <List size="big">
@@ -76,16 +88,7 @@ const OrderDetails = ({ id }) => (
                   }
                   icon="ethereum"
                 />
-                <StyledListItem
-                  header="Contract Address"
-                  content={
-                    <NewTabLink
-                      href={`${BLOCK_EXPLORER_URL}/address/${contractAddress}`}
-                      text={"View the token contract"}
-                    />
-                  }
-                  icon="ethereum"
-                />
+                <StyledListItem header="Contract Address" content={Contract} icon="ethereum" />
               </List>
             </>
           )

@@ -27,7 +27,7 @@ export const validName = name => {
 
 export const validSymbol = symbol => symbol.length <= 10 && symbol.length >= 0 && symbol !== ""
 
-export const validSupply = supply => supply > 0
+export const validSupply = supply => supply > 0 && supply >= 1000000000000000000
 
 export const validDecimals = decimals => 18 >= decimals && decimals >= 0
 
