@@ -25,7 +25,7 @@ export const validName = name => {
   return valid
 }
 
-export const validSymbol = symbol => symbol.length > 0 && symbol !== ""
+export const validSymbol = symbol => symbol.length <= 10 && symbol.length >= 0 && symbol !== ""
 
 export const validSupply = supply => supply > 0
 
