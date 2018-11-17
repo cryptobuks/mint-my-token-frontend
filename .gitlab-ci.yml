@@ -25,7 +25,7 @@ release-frontend-master:
     - echo "***** start release frontend *****"
     - cd /builds/broadhaven/mintmytoken/frontend
     - docker login registry.gitlab.com -u tim -p $API_KEY
-    - docker build --build-arg NODE_ENV=production -t registry.gitlab.com/broadhaven/mintmytoken/frontend:latest .
+    - docker build -t registry.gitlab.com/broadhaven/mintmytoken/frontend:latest .
     - docker push registry.gitlab.com/broadhaven/mintmytoken/frontend:latest
     - docker logout registry.gitlab.com
     - echo "***** end release frontend *****"
@@ -45,7 +45,7 @@ release-frontend-staging:
     - echo "***** start release frontend *****"
     - cd /builds/broadhaven/mintmytoken/frontend
     - docker login registry.gitlab.com -u tim -p $API_KEY
-    - docker build --build-arg NODE_ENV=staging -t registry.gitlab.com/broadhaven/mintmytoken/frontend:staging .
-    - docker push registry.gitlab.com/broadhaven/mintmytoken/frontend:staging
+    - docker build -t registry.gitlab.com/broadhaven/mintmytoken/frontend/staging-frontend:latest .
+    - docker push registry.gitlab.com/broadhaven/mintmytoken/frontend/staging-frontend:latest
     - docker logout registry.gitlab.com
     - echo "***** end release frontend *****"
