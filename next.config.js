@@ -33,7 +33,7 @@ const configs = {
     ...shared
   },
   production: {
-    APOLLO_ENDPOINT: "https://mintmytoken.com/graphql",
+    APOLLO_ENDPOINT: "https://backend-dot-mint-my-token.appspot.com",
     STRIPE_KEY: "pk_live_mZOuQKf7N5nbEFCI7bsDFWcZ",
     BLOCK_EXPLORER_URL: "https://etherscan.io",
     ...shared
