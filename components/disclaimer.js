@@ -3,14 +3,14 @@ import getConfig from "next/config"
 import { Modal, Button, Header } from "semantic-ui-react"
 import NewTabLink from "./new-tab-link"
 const {
-  publicRuntimeConfig: { DISCLAIMER, PRIVACY_POLICY }
+  publicRuntimeConfig: { DISCLAIMER, PRIVACY_POLICY },
 } = getConfig()
 
 class Disclaimer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      show: true
+      show: true,
     }
   }
 
@@ -20,7 +20,7 @@ class Disclaimer extends Component {
     }
   }
 
-  onClose = agreed => {
+  onClose = (agreed) => {
     if (agreed) {
       window.localStorage.setItem("disclaimer", Date.now())
     }

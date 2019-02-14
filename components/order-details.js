@@ -19,7 +19,7 @@ const StyledListItem = ({ header, content, icon }) => (
 )
 
 const {
-  publicRuntimeConfig: { BLOCK_EXPLORER_URL }
+  publicRuntimeConfig: { BLOCK_EXPLORER_URL },
 } = getConfig()
 
 const OrderDetails = ({ id }) => (
@@ -40,7 +40,7 @@ const OrderDetails = ({ id }) => (
             decimals,
             walletAddress,
             transactionId,
-            contractAddress
+            contractAddress,
           } = token
 
           let Contract = (
@@ -107,6 +107,6 @@ const OrderDetails = ({ id }) => (
 )
 
 OrderDetails.propTypes = {
-  id: PropTypes.string.isRequired
+  id: PropTypes.string.isRequired,
 }
 export default OrderDetails

@@ -10,7 +10,7 @@ class Home extends Component {
     this.state = { index: 0 }
   }
 
-  handleClick = index => {
+  handleClick = (index) => {
     if (index === this.state.index) {
       this.setState({ index: -1 })
     } else {

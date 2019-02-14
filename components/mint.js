@@ -15,12 +15,12 @@ import {
   validSupply,
   validDecimals,
   validEthereumAddress,
-  validTerms
+  validTerms,
 } from "../helpers/ethereum"
 import NewTabLink from "./new-tab-link"
 
 const {
-  publicRuntimeConfig: { TOKEN_PRICE, STRIPE_KEY, TERMS_AND_CONDITIONS }
+  publicRuntimeConfig: { TOKEN_PRICE, STRIPE_KEY, TERMS_AND_CONDITIONS },
 } = getConfig()
 
 async function onToken(response, token, payForToken) {
@@ -29,13 +29,13 @@ async function onToken(response, token, payForToken) {
   token.meta = "this is some meta info!" // TODO: add meta field
   token.supply = token.supply.toString()
   payForToken({ variables: { stripeId, token } })
-    .then(res => {
+    .then((res) => {
       Router.push({
         pathname: "/order",
-        query: { id: res.data.payForToken.message }
+        query: { id: res.data.payForToken.message },
       })
     })
-    .catch(err => alert(err.message))
+    .catch((err) => alert(err.message))
     .finally(() => {
       NProgress.done()
     })
@@ -51,7 +51,7 @@ class Mint extends Component {
       supply: "",
       decimals: "",
       walletAddress: "",
-      terms: false
+      terms: false,
     }
     // this.state = {
     //   email: "tim.holmes.mitra@gmail.com  ",
@@ -89,7 +89,7 @@ class Mint extends Component {
             return (
               <Form
                 size="large"
-                onSubmit={event => event.preventDefault()}
+                onSubmit={(event) => event.preventDefault()}
                 loading={loading}
                 error={Boolean(error)}
               >
@@ -201,7 +201,7 @@ class Mint extends Component {
                       amount={TOKEN_PRICE}
                       stripeKey={STRIPE_KEY}
                       email={email}
-                      token={response => onToken(response, token, payForToken)}
+                      token={(response) => onToken(response, token, payForToken)}
                     >
                       <Button color="green">Proceed to Checkout</Button>
                     </StripeCheckout>

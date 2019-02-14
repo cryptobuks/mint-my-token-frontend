@@ -3,21 +3,21 @@ import withApollo from "next-with-apollo"
 import ApolloClient from "apollo-boost"
 
 const {
-  publicRuntimeConfig: { APOLLO_ENDPOINT }
+  publicRuntimeConfig: { APOLLO_ENDPOINT },
 } = getConfig()
 
 const createClient = ({ headers }) =>
   new ApolloClient({
     uri: APOLLO_ENDPOINT,
-    request: operation => {
+    request: (operation) => {
       operation.setContext({
-        headers
+        headers,
       })
     },
     clientState: {
       resolvers: {},
-      defaults: {}
-    }
+      defaults: {},
+    },
   })
 
 export default withApollo(createClient)

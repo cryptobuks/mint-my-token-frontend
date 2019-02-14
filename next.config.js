@@ -10,7 +10,7 @@ const shared = {
   DISCLAIMER:
     "https://docs.google.com/document/d/e/2PACX-1vQ3Juqh7H2-HLEDuWC6Biw59Nmx_6dQcGSjP2GnPxVc_bFl_M26gdpFA_CmIdB9yHsOJWFDmApEi89m/pub",
   PRIVACY_POLICY:
-    "https://docs.google.com/document/d/e/2PACX-1vTlbFFBc8tt2xxwVdQ_WKHq2z8HadaSrlKZoV4JGzH35ASz55NfnAXZR-VkLUsK3YRiRo5EGma_OSpM/pub"
+    "https://docs.google.com/document/d/e/2PACX-1vTlbFFBc8tt2xxwVdQ_WKHq2z8HadaSrlKZoV4JGzH35ASz55NfnAXZR-VkLUsK3YRiRo5EGma_OSpM/pub",
 }
 
 const configs = {
@@ -18,26 +18,26 @@ const configs = {
     APOLLO_ENDPOINT: "http://localhost:8080/graphql",
     STRIPE_KEY: "pk_test_B1APk7za38DQGlpd9o5kyzqX",
     BLOCK_EXPLORER_URL: "https://ropsten.etherscan.io",
-    ...shared
+    ...shared,
   },
   development: {
     APOLLO_ENDPOINT: "http://localhost:8080/graphql",
     STRIPE_KEY: "pk_test_B1APk7za38DQGlpd9o5kyzqX",
     BLOCK_EXPLORER_URL: "https://ropsten.etherscan.io",
-    ...shared
+    ...shared,
   },
   staging: {
     APOLLO_ENDPOINT: "https://staging.mintmytoken.com/graphql",
     STRIPE_KEY: "pk_test_B1APk7za38DQGlpd9o5kyzqX",
     BLOCK_EXPLORER_URL: "https://ropsten.etherscan.io",
-    ...shared
+    ...shared,
   },
   production: {
     APOLLO_ENDPOINT: "https://backend-dot-mint-my-token.appspot.com",
     STRIPE_KEY: "pk_live_mZOuQKf7N5nbEFCI7bsDFWcZ",
     BLOCK_EXPLORER_URL: "https://etherscan.io",
-    ...shared
-  }
+    ...shared,
+  },
 }
 
 module.exports = (phase, { defaultConfig }) => {
@@ -45,15 +45,15 @@ module.exports = (phase, { defaultConfig }) => {
     return {
       ...defaultConfig,
       publicRuntimeConfig: {
-        ...configs[ENV]
-      }
+        ...configs[ENV],
+      },
     }
   }
 
   return {
     ...defaultConfig,
     publicRuntimeConfig: {
-      ...configs[ENV]
-    }
+      ...configs[ENV],
+    },
   }
 }

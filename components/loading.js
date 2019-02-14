@@ -1,4 +1,4 @@
-import { Card, Feed, Dimmer, Loader as SemanticLoading } from "semantic-ui-react"
+import { Dimmer, Loader as SemanticLoading } from "semantic-ui-react"
 
 const Loading = () => (
   <Dimmer active inverted>

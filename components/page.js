@@ -30,6 +30,6 @@ class Page extends Component {
 }
 
 Page.propTypes = {
-  children: PropTypes.element
+  children: PropTypes.element,
 }
 export default Page

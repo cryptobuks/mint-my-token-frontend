@@ -9,7 +9,7 @@ import getConfig from "next/config"
 
 dayjs.extend(relativeTime)
 const {
-  publicRuntimeConfig: { BLOCK_EXPLORER_URL }
+  publicRuntimeConfig: { BLOCK_EXPLORER_URL },
 } = getConfig()
 
 const RecentOrders = () => (

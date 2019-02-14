@@ -34,7 +34,10 @@ const Meta = () => (
     <script>{injectGoogleAnalytics()}</script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Create your own cryptocurrency in 5 minutes and only pay £5!" />
+    <meta
+      name="description"
+      content="Create your own cryptocurrency in 5 minutes and only pay £5!"
+    />
 
     <link rel="shortcut icon" href="/static/favicon.ico" />
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/semantic-ui@2.4.0/dist/semantic.min.css" />

@@ -8,11 +8,11 @@ import {
   validSymbol,
   validSupply,
   validDecimals,
-  validEthereumAddress
+  validEthereumAddress,
 } from "../../helpers/ethereum"
 
 const {
-  publicRuntimeConfig: { TERMS_AND_CONDITIONS }
+  publicRuntimeConfig: { TERMS_AND_CONDITIONS },
 } = getConfig()
 
 export const ExpertMinter = ({ loading, error, onChange, token }) => {
@@ -105,7 +105,7 @@ ExpertMinter.propTypes = {
   loading: PropTypes.bool,
   error: PropTypes.object,
   onChange: PropTypes.func.isRequired,
-  token: PropTypes.object.isRequired
+  token: PropTypes.object.isRequired,
 }
 
 export default ExpertMinter

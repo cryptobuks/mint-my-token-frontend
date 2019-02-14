@@ -1,8 +1,8 @@
 {
-  "name": "frontend",
+  "name": "mint-my-token-frontend",
   "version": "1.0.0",
   "main": "index.js",
-  "author": "Tim Holmes-Mitra",
+  "author": "Tim Holmes-Mitra <tim.holmes.mitra@gmail.com>",
   "license": "MIT",
   "private": true,
   "scripts": {

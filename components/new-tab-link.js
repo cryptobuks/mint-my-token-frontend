@@ -8,7 +8,7 @@ const NewTabLink = ({ href, text }) => (
 
 NewTabLink.propTypes = {
   href: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired
+  text: PropTypes.string.isRequired,
 }
 
 export default NewTabLink
